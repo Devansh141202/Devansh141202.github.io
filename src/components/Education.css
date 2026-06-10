@@ -1,0 +1,141 @@
+.education-section { background: var(--bg); }
+
+.edu-card {
+  display: flex;
+  gap: 28px;
+  padding: 36px;
+  max-width: 900px;
+}
+
+.edu-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.edu-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-glow);
+  border: 2px solid var(--border-accent);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.edu-timeline-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin-top: 12px;
+  display: none;
+}
+
+.edu-content { flex: 1; }
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.edu-degree {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.edu-institution {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.edu-short {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.edu-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+}
+
+.edu-gpa {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.edu-gpa strong { font-weight: 800; font-family: 'Space Mono', monospace; }
+
+.edu-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.edu-block-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.edu-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.edu-activities { display: flex; flex-direction: column; gap: 10px; }
+.edu-activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.point-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .edu-card { flex-direction: column; padding: 24px; }
+  .edu-header { flex-direction: column; gap: 16px; }
+  .edu-meta { align-items: flex-start; }
+}

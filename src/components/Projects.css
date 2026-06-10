@@ -1,0 +1,110 @@
+.projects-section { background: var(--bg-secondary); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.project-card:hover::before { opacity: 1; }
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.project-icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-icon { font-size: 1.4rem; }
+
+.project-links { display: flex; align-items: center; gap: 8px; }
+
+.proj-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+.proj-link:hover {
+  color: var(--accent);
+  border-color: var(--border-accent);
+}
+
+.proj-private {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.project-body { flex: 1; margin-bottom: 24px; }
+
+.project-subtitle {
+  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.project-tech { display: flex; flex-wrap: wrap; gap: 7px; }
+
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}

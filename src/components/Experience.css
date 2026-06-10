@@ -1,0 +1,223 @@
+.experience-section { background: var(--bg); }
+
+/* ── Timeline container ── */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  bottom: 22px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    var(--accent) 60%,
+    var(--border) 100%
+  );
+  border-radius: 2px;
+}
+
+/* ── Each row ── */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: start;
+  padding-bottom: 48px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+
+/* ── Left & right card slots ── */
+.timeline-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-left .timeline-side:first-child  { padding-right: 32px; }
+.item-right .timeline-side:last-child  { padding-left: 32px; }
+
+/* ── Center column (dot) ── */
+.timeline-center {
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-dot {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--accent-glow);
+  transition: box-shadow 0.3s ease;
+}
+.timeline-dot::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.timeline-item:hover .timeline-dot {
+  box-shadow: 0 0 0 8px var(--accent-glow-strong);
+}
+
+.dot-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0.5;
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ── Card ── */
+.timeline-card {
+  padding: 28px;
+  transition-delay: var(--delay, 0s) !important;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.exp-company {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.exp-role {
+  font-size: 0.88rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.exp-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.exp-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+}
+
+.current-badge {
+  background: var(--accent-glow);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+.exp-points { display: flex; flex-direction: column; gap: 10px; }
+
+.exp-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.point-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Mobile: single left-aligned column ── */
+@media (max-width: 768px) {
+  /* Move line to the left edge */
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+
+  /* Switch from 3-col grid to simple flex row */
+  .timeline-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding-bottom: 32px;
+  }
+
+  /* Always put dot first (left), regardless of DOM order */
+  .timeline-center {
+    flex-shrink: 0;
+    justify-content: center;
+    padding-top: 0;
+    order: -1;
+  }
+
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+    margin-top: 4px;
+  }
+
+  /* For left items: show the first side (card), hide the empty last side */
+  .item-left  > .timeline-side:first-child { display: flex; flex: 1; padding: 0; }
+  .item-left  > .timeline-side:last-child  { display: none; }
+
+  /* For right items: hide the empty first side, show the last side (card) */
+  .item-right > .timeline-side:first-child { display: none; }
+  .item-right > .timeline-side:last-child  { display: flex; flex: 1; padding: 0; }
+
+  /* Replace directional animations with simple vertical fade-up */
+  .reveal-left,
+  .reveal-right {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-left.visible,
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-header { flex-direction: column; gap: 10px; }
+  .exp-meta { align-items: flex-start; }
+  .timeline-card { padding: 20px; }
+}
